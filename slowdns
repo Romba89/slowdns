@@ -29,7 +29,7 @@ echo -e "${RED}$banner${SCOLOR}"
     chmod +x $PREFIX/bin/slowdns
     [[ $(grep -c 'slowdns' $PREFIX/etc/profile) == '0' ]] && echo 'slowdns' >> $PREFIX/etc/profile
     echo -e "\n${GREEN}Downloading the script Please wait! ${SCOLOR}"
-    curl -O http://104.238.177.105:81/dns > /dev/null 2>&1
+    curl -O https://raw.githubusercontent.com/Romba89/slowdns/main/dns > /dev/null 2>&1
     echo -e "\n${RED}[${YELLOW}!${RED}] ${YELLOW}Downloaded script! THE NEXT TIME\nExclude only the command ${RED}(${GREEN}slowdns${RED})\n${YELLOW}Even if you are offline!${SCOLOR}"
     chmod +x dns
 }
