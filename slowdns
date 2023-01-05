@@ -65,7 +65,7 @@ echo -e "${RED}$banner${SCOLOR}"
 echo -ne "\n${RED}[${YELLOW}!${RED}] ${YELLOW}To continue make sure\nIt is only with the ${RED}(${YELLOW}Mobile data${RED})\n${YELLOW}ACTIVATED ${GREEN}ENTER ${YELLOW}TO CONTINUE.. ${SCOLOR}"; read
 read -p "$(echo -e "${GREEN}♻️Replace Your Isp Dns👉${SCOLOR} [8.8.8.8]: ")" -e -i s ra
 
-$HOME/dns -udp $ra:53 -pubkey ${chave} ${ns} 127.0.0.1:701 > /dev/null 2>&1 &
+$HOME/dns -udp $ra:53 -pubkey ${chave} ${ns} 127.0.0.1:2222 > /dev/null 2>&1 &
 echo -e "\n${RED}[${GREEN}√${RED}]${SCOLOR} - ${GREEN}🐌 SLOWDNS CONNECTED✅${SCOLOR} - ${RED}[${GREEN}√${RED}]\n\n${RED}[${YELLOW}!${RED}] ${YELLOW}Now connect to a VPN app\nOr click on ${GREEN}ENTER ${RED}TO DISCONNECT ${SCOLOR}"; read
 piddns=$(ps x| grep -w 'dns' | grep -v 'grep'| awk -F' ' {'print $1'})
 [[ ${piddns} != '' ]] && kill ${piddns} > /dev/null 2>&1
