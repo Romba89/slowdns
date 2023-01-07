@@ -135,7 +135,7 @@ menu_dns() {
     unset LD_PRELOAD > /dev/null 2>&1
     ns=$(sed -n 1p $HOME/credenciais)
     chave=$(sed -n 2p $HOME/credenciais)
-    $HOME/dns -udp ${dns}:53 -pubkey ${chave} ${ns} 127.0.0.1:88 > /dev/null 2>&1 &
+    $HOME/dns -udp ${dns}:53 -pubkey ${chave} ${ns} 127.0.0.1:2222 > /dev/null 2>&1 &
     $comand --clear \
         --backtitle "$BACKTITLE" \
         --title " SLOWDNS STARTED " \
