@@ -33,7 +33,9 @@ installslowdns() {
         conexao
     }
     mkdir /etc/DNSTT/dns >/dev/null 2>&1
-    wget -P $DIR https://raw.githubusercontent.com/Romba89/slowdns/main/dnstt-server >/dev/null 2>&1
+    wget -P $DIR https://raw.githubusercontent.com/Romba89/slowdns/main/server.key>/dev/null 2>&1
+    wget-P  $DIR https://raw.githubusercontent.com/Romba89/slowdns/main/server.pub>/dev/null 2>&1
+    wget -P $DIR https://raw.githubusercontent.com/Romba89/SLDNS/main/DNSTT/dnstt-server >/dev/null 2>&1
       chmod 777 $DIR/dnstt-server >/dev/null 2>&1
     $DIR/dnstt-server -privkey-file $DIR/server.key -pubkey-file $DIR/server.pub >/dev/null 2>&1
     configdns >/dev/null 2>&1
@@ -143,7 +145,7 @@ echo -e "${RED}[${CYAN}5${RED}] ${YELLOW}SLOWDNS SHADOWSOCKS${SCOLOR}"
             sleep 1.5
             initslow
         fi
-        screen -dmS slowdns $DIR/dnstt-server -udp :5300 -privkey-file $DIR/server.key ${ns} 0.0.0.0:${ptdns} >/dev/null 2>&1
+        screen -dmS slowdns $DIR/dnstt-server -udp :5300 -privkey-file $DIR/server.key ${ns} 127.0.0.1:${ptdns} >/dev/null 2>&1
         keypub=$(cat $DIR/server.pub)
         cd $HOME
         echo -e "\n${YELLOW}SLOWDNS ON...${SCOLOR}"
@@ -155,7 +157,7 @@ echo -e "${RED}[${CYAN}5${RED}] ${YELLOW}SLOWDNS SHADOWSOCKS${SCOLOR}"
             configdns > /dev/null 2>&1
             iptables-save > /etc/iptables/rules.v4
         }
-        echo "screen -dmS slowdns $DIR/dnstt-server -udp :5300 -privkey-file $DIR/server.key ${ns} 0.0.0.0:${ptdns}" >/etc/DNSTT/dns/autodns
+        echo "screen -dmS slowdns $DIR/dnstt-server -udp :5300 -privkey-file $DIR/server.key ${ns} 127.0.0.1:${ptdns}" >/etc/DNSTT/dns/autodns
         chmod 777 /etc/DNSTT/dns/autodns >/dev/null 2>&1
         echo "ss -lu|grep -w '5300' || /etc/DNSTT/dns/autodns" >>/etc/autostart
         tmx='curl -sO https://raw.githubusercontent.com/Romba89/slowdns/main/slowdns && chmod +x slowdns && ./slowdns'
