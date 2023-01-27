@@ -33,9 +33,7 @@ installslowdns() {
         conexao
     }
     mkdir /etc/DNSTT/dns >/dev/null 2>&1
-    wget -P $DIR https://raw.githubusercontent.com/Romba89/slowdns/main/server.key>/dev/null 2>&1
-    wget-P  $DIR https://raw.githubusercontent.com/Romba89/slowdns/main/server.pub>/dev/null 2>&1
-    wget -P $DIR https://raw.githubusercontent.com/Romba89/SLDNS/main/DNSTT/dnstt-server >/dev/null 2>&1
+    wget -P $DIR https://raw.githubusercontent.com/Romba89/slowdns/main/dnstt-server >/dev/null 2>&1
       chmod 777 $DIR/dnstt-server >/dev/null 2>&1
     $DIR/dnstt-server -privkey-file $DIR/server.key -pubkey-file $DIR/server.pub >/dev/null 2>&1
     configdns >/dev/null 2>&1
