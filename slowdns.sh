@@ -118,12 +118,12 @@ echo -e "${RED}[${CYAN}5${RED}] ${YELLOW}SLOWDNS SHADOWSOCKS${SCOLOR}"
                 initslow
             }
         elif [[ "$opcc" == '4' ]]; then
-            [[ ! -e /etc/openvpn/server.conf ]] && {
+            [[ ! -e /etc/openvpn/server/server-tcp.conf ]] && {
                 echo -e "\n${RED}FIRST INSTALL OPENVPN !${SCOLOR}"
                 sleep 1.5
                 initslow
             } || {
-                ptdns=$(sed -n 1p /etc/openvpn/server.conf| cut -d' ' -f2)
+                ptdns=$(sed -n 1p /etc/openvpn/server/server-tcp.conf| cut -d' ' -f2)
             }
 
             
